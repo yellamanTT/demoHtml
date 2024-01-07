@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head> <a href= "https://overthewire.org/wargames/bandit/bandit13.html">BanditLevel12</a>
+</head> 
+<style>
+body	{
+background-color:lightblue;
+}
+</style>
+<title>OverTheWire Level 12 Documentation</title>
+<body> 
+
+<h1 style="font-family: Brush Script MT;">
+OverTheWire Level 12
+</h1>
+<style> p {
+			font-family: verdana;
+ }
+</style>
+<p>Data.txt is a hexdump of file that has been compressed multiple times with different methods.
+
+
+<p>Tools needed: cat, xxd -r (reverse hexdump) , mv, file, tar, tar -x (decompress tar files) , bzip, bzip -d (decompress bzip files) gunzip, gunzip -d (decompress gunzip files
+
+<p>Prelab- Make a new directory: 'mkdir' in the '/tmp' directory. It will have to end in a number ex: mkdir /tmp/jason123. move the file there with mv data.txt /tmp/jason123 This will make things easier. Remember to substitute 'jason123' for what you named the directory. Or, feel free to use my name. I'm biased, but I think it's a good name.
+
+<p> cd (change directory) into [tmp/yourname123] 
+
+<p>Layer 0: The file is curently a hexdump. We want a readable file, so we're going to fix that. Use the command 'XXD-r' to reverse the hexdump
+<p>Layer 1: Use the command 'file' to verify the file type. It will be a gzip file, which means the tool used to compress this file was gzip. Simple enough right? We use the same tool to decompress a file as the one that was used to compress it, but there's a trick to this one.
+<p>Layer 2: The gzip command will not work on files that don't end in '.gzip'. rename the file using mv: 'mv [file] [file.gzip]
+<p>Layer 3: We know that this file was compressed using gzip, and we have renamed the file so that the gzip tool will recognize it. Now, we will use the gzip tool to decompress the file. 'gzip -d [file.gzip]' will do the trick
+<p>At this point, you've probably got a good grasp on what's going on here. We've decompressed the file once, and per the instructions we know that the file was compressed multiple times. So go ahead and just keep decompressing the file. Wait! Did you check the file type yet?
+<p>Layer 4: Use 'ls' to find out the new name of the file then 'file' [yourfile] to find out the file type. In this case it will be a TAR file. TAR files can be decompressed with tar -x [yourfile]. Pretty simple, right?
+<p>Layer 5: Keep repeating Layer 4, remembering that anytime the file type is a gzip file, you will have to rename that file to [yourfile.gzip] before you can decompress it. In addition to gzip, and TAR, you'll also run into bzip files, which are decompressed with bzip-d. ez pz.
+<p>Layer 6: Once you've got a text file enter 'cat' [file] and you'll get the password to the next level. OR, you could click the button below for the password, but where's the fun in that?
+</p>
+
+
+<button onclick="myFunction()">Reveal Password</button>
+
+<p id="demo" style="display:none">wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw.</p>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("demo");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<img src="https://cdn.pixabay.com/photo/2019/08/24/08/33/dancing-bears-4427176_1280.jpg" alt="Dancing Bears" width="700" height="600">
+</body>
+</html>
+
+
